@@ -6,7 +6,7 @@
             <h2 style="margin-top: 0;">
                 {% if loop.first %}Primary Prediction: {% else %}Alternative: {% endif %}
                 {{ res.disease }} 
-                <span style="float: right; font-size: 0.6em; color: #7f8c8d;">Confidence: {{ res.probability }}%</span>
+                <span style="float: right; font-size: 0.6em; color: #7f8c8d;">Confidence: {{ res.confidence }}%</span>
             </h2>
             <p><strong>Description:</strong> {{ res.description }}</p>
         </div>
