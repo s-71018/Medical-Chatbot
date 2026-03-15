@@ -12,8 +12,8 @@ with open('health_model.pkl', 'rb') as f:
     model, all_symptoms = data['model'], data['symptoms']
 
 # Categorization
-HISTORY = ['extra_marital_contacts', 'history_of_alcohol_consumption', 'family_history']
-LAB_SIGNS = ['irregular_sugar_level', 'dark_urine', 'yellow_urine', 'fast_heart_rate']
+HISTORY = ['extra_marital_contacts', 'history_of_alcohol_consumption', 'family_history', 'receiving_blood_transfusion', 'receiving_unsterile_injections']
+LAB_SIGNS = ['irregular_sugar_level', 'dark_urine', 'yellow_urine', 'polyuria', 'fluid_overload', 'fast_heart_rate', 'blood_in_sputum']
 
 @app.route('/')
 def index():
@@ -38,7 +38,7 @@ def get_consultation():
     probs = model.predict_proba([input_vec])[0]
     top_3_idx = np.argsort(probs)[-3:][::-1]
     
-    desc_df = pd.read_csv('symptom_Description.csv')
+    desc_df = pd.read_csv('dataset/symptom_Description.csv')
     results = []
 
     for idx in top_3_idx:
