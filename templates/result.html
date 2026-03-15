@@ -1,0 +1,27 @@
+<div class="container" style="max-width: 800px; margin: auto; padding: 20px; font-family: sans-serif;">
+    <h1 style="text-align: center; color: #2c3e50;">Diagnostic Analysis</h1>
+    
+    {% for res in results %}
+        <div style="background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; border-left: 10px solid {{ '#2ecc71' if loop.first else '#3498db' }}; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h2 style="margin-top: 0;">
+                {% if loop.first %}Primary Prediction: {% else %}Alternative: {% endif %}
+                {{ res.disease }} 
+                <span style="float: right; font-size: 0.6em; color: #7f8c8d;">Confidence: {{ res.probability }}%</span>
+            </h2>
+            <p><strong>Description:</strong> {{ res.description }}</p>
+        </div>
+    {% endfor %}
+
+    <div style="background-color: #fff3f3; border: 1px solid #e74c3c; padding: 15px; border-radius: 5px; margin-top: 30px;">
+        <h4 style="color: #c0392b; margin-top: 0;">⚠️ MEDICAL DISCLAIMER</h4>
+        <p style="font-size: 0.85em; color: #333;">
+            This tool is for educational purposes and provides results based on a Machine Learning model. 
+            <strong>It is not a substitute for professional medical advice.</strong> 
+            If you are feeling unwell, please consult a licensed physician immediately.
+        </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="/" style="text-decoration: none; background: #34495e; color: white; padding: 10px 25px; border-radius: 5px;">New Analysis</a>
+    </div>
+</div>
